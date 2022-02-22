@@ -41,4 +41,17 @@ city_col_df <- df %>%
          -Address)
 ```
 
+```{r}
+solutions_city_col_df = city_col_df %>% 
+  mutate(acceptance_rate =round( `Admissions Total`/`Applicants Total`,3))
+```
 
+
+
+
+## Amber's Preferences
+- has a scholarship for playing tennis from Dwight F. Davis Memorial Scholarship where she does not have to worry about **out of state tuition**
+
+## Jake's Preferences
+
+## Olivia's Preferences
