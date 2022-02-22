@@ -1,0 +1,44 @@
+---
+title: "Scratch File for College Admission"
+author: "Dr. Williams"
+date: "2/22/2022"
+output: html_document
+---
+```{r}
+
+## Load Libriaries
+library(tidyverse)
+library(readxl)
+```
+
+```{r}
+setwd("C:/Users/james/Desktop/college_admission_data")
+df = read_xlsx('typical_ca_colleges.xlsx',sheet = 'typical_ca_colleges')
+```
+
+
+```{r}
+## 1) More than 0 enrollment
+city_col_df <- df %>% 
+  filter(`Enrolled Total` > 0,
+         Urban %in% c(11,12,13)) %>% ## Provides only city colleges
+  mutate(city_size = case_when(
+    Urban == 11 ~ 'Large',
+    Urban == 12 ~ 'Midsize',
+    Urban == 13 ~ 'Small'
+  )) %>% 
+  select(-ID,
+         -`Price In-State Living off Campus`,
+         -`Price Out-of-State Living off Campus`, 
+         -GPA,
+         -`Enrolled Total`,
+         -`SAT Reading 75th Percentile`,
+         -`ACT English 75th Percentile`,
+         -`ACT Math 75th Percentile`,
+         -Private,
+         -Urban,
+         -Major,
+         -Address)
+```
+
+
