@@ -24,7 +24,7 @@ df = read_xlsx('typical_ca_colleges.xlsx',sheet = 'typical_ca_colleges')
 city_col_df <- df %>% 
   filter(`Enrolled Total` > 0,
          Urban %in% c(11,12,13)) %>% ## Provides only city colleges
-  mutate(city_size = case_when(
+  mutate(City_Size = case_when(
     Urban == 11 ~ 'Large',
     Urban == 12 ~ 'Midsize',
     Urban == 13 ~ 'Small'
@@ -40,45 +40,56 @@ city_col_df <- df %>%
          -Private,
          -Urban,
          -Major,
-         -Address)
+         -Address) %>% 
+  filter(!(is.na(`ACT Composite 75th Percentile`) & is.na(`SAT Math 75th Percentile`))) %>% 
+  mutate(State = case_when(
+    str_detect(`School Name`,'California') ~ 'IS',
+    str_detect(`School Name`, c('San Jose|San Francisco|Chapman University|University of the Pacific|University of Redlands|Simpson University|Santa Clara University|San Diego State University|Point Loma Nazarene University|Mills College|Mount Saint Mary\'s University|Occidental College|Loyola Marymount University|La Sierra University|Fresno Pacific University|Concordia University-Irvine' ))~ 'IS', 
+    TRUE ~ 'OOS'
+  ),
+  Acceptance_Rate =round( `Admissions Total`/`Applicants Total`,3)
+  )
+
+
+
+new_column_names <- str_replace_all(colnames(city_col_df),' ','_') %>% 
+  str_replace_all('Living_on_Campus','LOC') %>% 
+  str_remove_all('_75th_Percentile') %>% 
+  str_replace_all('Out-of-State','OOS') %>% 
+  str_replace_all('In-State','IS') 
+
+colnames(city_col_df) <- new_column_names 
+
+
+
+
+
 ```
 
-```{r}
-## Create variables for the solutions
-solutions_city_col_df = city_col_df %>% 
-  mutate(acceptance_rate =round( `Admissions Total`/`Applicants Total`,3)
-         
-         )
-
-## Task 1: Make column names easier to use based on selected 10
-## Task 2: Create in California variable
-```
 
 
-
-Everyone Create a new variable named: acceptance rate
 
 
 ## Amber's Preferences
 
 - CONTEXT: (State why she wants each variable in the context of a student)Amber is only interested in the cost of the school, Admissions, ACT composite, out of state. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her composite score was a 32. Amber has a scholarship for playing tennis from Dwight F. Davis Memorial Scholarship where she does not have to worry about out of state tuition.
-  - Action - **Select**: School Name, ACT Score, *Out of State*
+- Action - **Select**: School Name, ACT Score, *Out of State*
 1. How many variable are located in this table? 
 
-  - Action - **Filter**: Based on Amber's ACT score, filter out all the schools that would accept her based on her ACT score.
+- Action - **Filter**: Based on Amber's ACT score, filter out all the schools that would accept her based on her ACT score.
 
 2. How many schools would accept her based on her ACTs score?
 
 
-  - Action - **Filter**: Since Amber wants to go out of state, filter only schools that are out of state.
+- Action - **Filter**: Since Amber wants to go out of state, filter only schools that are out of state.
 3. How many schools would accept her based on her ACTs score that are out of state?
 4. Sort through the data, which school has the lowest ACT Score?
 
 
 Teaching principles
- - filter, & select
- - ==, <=
- 
+- filter, & select
+- ==, <=
+
 
 
 
@@ -88,11 +99,11 @@ Teaching principles
 - CONTEXT: Wants a large school
 
 - Action - **Select**: School Name, Admission,Applicants,*Acceptance Rate*, ACT
-  Score, *Out of State*
-  
-  
+Score, *Out of State*
+
+
 Teaching principles:
- - mutate, filter, & select
- - ==, <=
+- mutate, filter, & select
+- ==, <=
 
 ## Olivia's Preferences
