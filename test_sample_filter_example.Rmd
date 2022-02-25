@@ -29,7 +29,21 @@ tutorial_options(
   }
 )
 knitr::opts_chunk$set(error = TRUE)
+
+music_artist_df = read.csv('music_artist.csv')
 ```
+
+## What is a Dataframe?
+
+### Everything is stored in a data frame
+A data frame consists of rows and columns, the rows represent observations and the columns represent the information collected on each observation. Click Run Code to see an example of data frame that has some top artist from last year's billboard chart.
+
+
+```{r viewdata, exercise = TRUE, exercise.eval = FALSE}
+music_artist_df
+```
+
+
 
 ## Welcome
 
