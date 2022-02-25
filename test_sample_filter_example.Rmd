@@ -60,8 +60,9 @@ question("Which artist had the longest song based on the data frame? ",
 )
 ```
 
+## Title
 
-## Long Songs
+### Long Songs
 You do not like long songs, so you can <span style="color: blue;">**filter**</span> a data frame to obtain only songs that are strictly less than 4 minutes. The code below will only provide songs that are equal to or more than 4 minutes. 
 
 Change the code so that you have a data frame that has songs strictly less than 4 minutes.
@@ -72,6 +73,7 @@ filter(music_artist_df,Length >= 4)
 
 
 ### Quick Question 2
+
 ```{r filter_Q2, echo = FALSE}
 question("What is the purpose of filter function? ",
          answer("Filter rows based on a condition", correct = TRUE),
@@ -90,13 +92,14 @@ select(music_artist_df,Artist, Length)
 ```
 
 ### Quick Question 3
+
 ```{r select_Q3, echo = FALSE}
 question("What is the purpose of select function? ",
          answer("Selects columns", correct = TRUE),
          answer("Selects rows", message = "What reduced: rows or columns"),
          allow_retry = TRUE
 )
-``
+```
 
 
 ## Welcome
