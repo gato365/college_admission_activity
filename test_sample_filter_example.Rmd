@@ -1,5 +1,5 @@
 ---
-title: "Test Program: Filter observations"
+title: "Learning more about Data Science"
 output:
   learnr::tutorial:
     progressive: true
@@ -33,16 +33,70 @@ knitr::opts_chunk$set(error = TRUE)
 music_artist_df = read.csv('music_artist.csv')
 ```
 
-## What is a Dataframe?
+## What is a data frame?
 
 ### Everything is stored in a data frame
-A data frame consists of rows and columns, the rows represent observations and the columns represent the information collected on each observation. Click Run Code to see an example of data frame that has some top artist from last year's billboard chart.
+A <span style="color: red;">**data frame**</span> consists of rows and columns. 
+ 
+ - the <span style="color: red;">**rows**</span> represent observations 
+ - the <span style="color: red;">**columns**</span> represent the information collected on each observation. 
+ 
+Click Run Code button to see an example of data frame that has some top artist from last year's billboard chart.
 
 
 ```{r viewdata, exercise = TRUE, exercise.eval = FALSE}
 music_artist_df
 ```
 
+
+### Quick Question 1
+
+```{r longsong_Q1, echo = FALSE}
+question("Which artist had the longest song based on the data frame? ",
+         answer("Olivia Rodrigo", correct = TRUE),
+         answer("The Weekend", message = "His song was the shortest"),
+         answer("Dua Lipa", message = "Not Quite"),
+         allow_retry = TRUE
+)
+```
+
+
+## Long Songs
+You do not like long songs, so you can <span style="color: blue;">**filter**</span> a data frame to obtain only songs that are strictly less than 4 minutes. The code below will only provide songs that are equal to or more than 4 minutes. 
+
+Change the code so that you have a data frame that has songs strictly less than 4 minutes.
+
+```{r filter_song1, exercise = TRUE, exercise.eval = FALSE}
+filter(music_artist_df,Length >= 4)
+```
+
+
+### Quick Question 2
+```{r filter_Q2, echo = FALSE}
+question("What is the purpose of filter function? ",
+         answer("Filter rows based on a condition", correct = TRUE),
+         answer("Filter columns based on a condition", message = "What reduced: rows or columns"),
+         allow_retry = TRUE
+)
+```
+
+## The Titles and Artists
+Lets start off with the original music artist data frame. Lets say you want primarily focus on the Artist and Title columns, you can just <span style="color: blue;">**Select**</span> those columns. The code below only selects the Artist and Length.
+
+Change the code so that you have a data frame that consists of the Artist and Title.
+
+```{r select_column1, exercise = TRUE, exercise.eval = FALSE}
+select(music_artist_df,Artist, Length)
+```
+
+### Quick Question 3
+```{r select_Q3, echo = FALSE}
+question("What is the purpose of select function? ",
+         answer("Selects columns", correct = TRUE),
+         answer("Selects rows", message = "What reduced: rows or columns"),
+         allow_retry = TRUE
+)
+``
 
 
 ## Welcome
