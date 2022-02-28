@@ -41,7 +41,7 @@ A <span style="color: red;">**data frame**</span> consists of rows and columns.
  - the <span style="color: red;">**rows**</span> represent observations 
  - the <span style="color: red;">**columns**</span> represent the information collected on each observation. 
  
-Click Run Code button to see an example of data frame that has some top artist from last year's billboard chart.
+Click *Run Code* button to see an example of data frame that has some top artist from last year's billboard chart.
 
 
 ```{r viewdata, exercise = TRUE, exercise.eval = FALSE}
@@ -56,7 +56,8 @@ question("Which artist had the longest song based on the data frame? ",
          answer("Olivia Rodrigo", correct = TRUE),
          answer("The Weekend", message = "His song was the shortest"),
          answer("Dua Lipa", message = "Not Quite"),
-         allow_retry = TRUE
+         allow_retry = TRUE,
+         random_answer_order = TRUE
 )
 ```
 
@@ -78,9 +79,12 @@ filter(music_artist_df,Length >= 4)
 question("What is the purpose of filter function? ",
          answer("Filter rows based on a condition", correct = TRUE),
          answer("Filter columns based on a condition", message = "What reduced: rows or columns"),
-         allow_retry = TRUE
+         allow_retry = TRUE,
+         random_answer_order = TRUE
 )
 ```
+
+
 
 ## The Titles and Artists
 Lets start off with the original music artist data frame. Lets say you want primarily focus on the Artist and Title columns, you can just <span style="color: blue;">**Select**</span> those columns. The code below only selects the Artist and Length.
@@ -91,15 +95,70 @@ Change the code so that you have a data frame that consists of the Artist and Ti
 select(music_artist_df,Artist, Length)
 ```
 
+
 ### Quick Question 3
 
 ```{r select_Q3, echo = FALSE}
 question("What is the purpose of select function? ",
          answer("Selects columns", correct = TRUE),
          answer("Selects rows", message = "What reduced: rows or columns"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+)
+```
+
+
+## Internship Opportunity
+
+Based on your experience programming, your guidance counselor wants you to help your friends determine which schools to apply to. These friends happen to be triplets (Amber, Jake, and Olivia). However, they  do not know where they want to go. Their parents gave them the option of selecting schools in either Hawaii, Oregon, Utah, Nevada, California, Colorado, or Washington. Their parent’s rationale is that the triplets know their relatives in these states. 
+
+All siblings want to live on campus so that they can get the real college experience. You also know that they would like to be in a city because they always wanted to be near a lot of people. They know that they will not go to the same school because they have different criteria that are important to them. 
+
+### Questions About the Scenario
+
+
+### Quick Question 4
+
+```{r select_Q4, echo = FALSE}
+
+question_numeric(
+  "How many states are they able to apply to based on their parents request?",
+  answer(7, correct = TRUE),
+  allow_retry = TRUE,
+  min = 7,
+  max = 7,
+  step = 0.01
+)
+
+
+```
+
+```{r select_Q5, echo = FALSE}
+question("What type of college campus does the triplets want to live in?",
+         answer("City", correct = TRUE),
+         answer("Suburban", message = "Read the second paragraph again"),
+          answer("Rural", message = "Read the second paragraph again"),
          allow_retry = TRUE
 )
 ```
+
+
+```{r select_Q6, echo = FALSE}
+question("Do all siblings want to go to the same school? ",
+         answer("No", correct = TRUE),
+         answer("Yes", message = "Read the second paragraph again"),
+         answer("It depends on where they get in",  message = "Read the second paragraph again"),
+         allow_retry = TRUE
+)
+```
+
+
+
+
+
+
+
+
 
 
 ## Welcome
