@@ -16,6 +16,7 @@ library(learnr)
 library(tidyverse)
 library(nycflights13)
 library(Lahman)
+library(kableExtra)
 tutorial_options(
   exercise.timelimit = 60,
   # A simple checker function that just returns the message in the check chunk
@@ -31,6 +32,8 @@ tutorial_options(
 knitr::opts_chunk$set(error = TRUE)
 
 music_artist_df = read.csv('music_artist.csv')
+source('load_college_data.R')
+
 ```
 
 ## What is a data frame?
@@ -119,7 +122,7 @@ All siblings want to live on campus so that they can get the real college experi
 
 ### Quick Question 4
 
-```{r select_Q4, echo = FALSE}
+```{r descrip_Q4, echo = FALSE}
 
 question_numeric(
   "How many states are they able to apply to based on their parents request?",
@@ -133,7 +136,9 @@ question_numeric(
 
 ```
 
-```{r select_Q5, echo = FALSE}
+
+
+```{r descrip_Q5, echo = FALSE}
 question("What type of college campus does the triplets want to live in?",
          answer("City", correct = TRUE),
          answer("Suburban", message = "Read the second paragraph again"),
@@ -143,7 +148,9 @@ question("What type of college campus does the triplets want to live in?",
 ```
 
 
-```{r select_Q6, echo = FALSE}
+
+
+```{r descrip_Q6, echo = FALSE}
 question("Do all siblings want to go to the same school? ",
          answer("No", correct = TRUE),
          answer("Yes", message = "Read the second paragraph again"),
@@ -152,14 +159,50 @@ question("Do all siblings want to go to the same school? ",
 )
 ```
 
+## Data Frame Based on the Triplets
+Click *Run Code* to view the first 6 rows of 
+```{r view_college_data, exercise = TRUE, exercise.eval = FALSE}
+head(city_college_df)
+```
 
+<!-- Might Delete because it is redundant -->
+### Columns
+Below represents a list of information collected on each school
 
+```{r echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+data.frame(`Column_Names` = str_replace_all(colnames(city_college_df),'_',' ')) %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+- **OOS** is out of state
+- **IS** is in state
 
 ## Amber's Preferences
 
-- CONTEXT: (State why she wants each variable in the context of a student)Amber is only interested in the cost of the school, Admissions, ACT composite, out of state. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her composite score was a 32. Amber has a scholarship for playing tennis from Dwight F. Davis Memorial Scholarship where she does not have to worry about out of state tuition.
-- Action - **Select**: School Name, ACT Score, *Out of State*
-1. How many variable are located in this table? 
+Amber is only interested in the cost of the school, Admissions, ACT composite, going to a school out of state. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her composite score was a 32. 
+
+Amber has a scholarship for playing tennis from Dwight F. Davis Memorial Scholarship where she does not have to worry about out of state tuition.
+
+0. Which columns do you think Amber should concentrate on based on her preferences?
+(Select All that apply)
+```{r amber_pref_Q7, echo = FALSE}
+question("Which columns do you think Amber should concentrate on based on her 
+         preferences? (Select All that apply)",
+         answer("School Name", correct = TRUE),
+         answer("ACT Composite", correct = TRUE),
+         answer("Price OOS LOC", correct = TRUE),
+         answer("SAT Math",message = 'Which test did she preformed better on?'),
+         answer("Price IS LOC", ),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+)
+```
+
+
+- Action - **Select**: School Name, ACT Composite, *Out of State*
+
+1. Create a data frame by selecting the columns that Are imperative to Amber's preference. 
 
 - Action - **Filter**: Based on Amber's ACT score, filter out all the schools that would accept her based on her ACT score.
 
