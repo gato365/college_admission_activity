@@ -17,6 +17,7 @@ library(tidyverse)
 library(nycflights13)
 library(Lahman)
 library(kableExtra)
+library(reactable)
 tutorial_options(
   exercise.timelimit = 60,
   # A simple checker function that just returns the message in the check chunk
@@ -175,13 +176,13 @@ data.frame(`Column_Names` = str_replace_all(colnames(city_college_df),'_',' ')) 
   kable_styling()
 ```
 
-- **OOS** is out of state
-- **IS** is in state
+- **OOS** is Out-Of-State
+- **IS** is In-State
 - **LOC** is living on campus
 
 ## Amber's Preferences
 
-Amber is only interested in the school name, Admissions, ACT Composite, Out of state tuitionate. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her composite score was a 32. 
+Amber is only interested in the school name, ACT Composite, Out of state tuition. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her composite score was a 32. 
 
 Amber has a scholarship for playing tennis from Dwight F. Davis Memorial Scholarship where she does not have to worry about out of state tuition.
 
@@ -193,29 +194,35 @@ question("Which columns do you think Amber should concentrate on based on her
          answer("ACT Composite", correct = TRUE),
          answer("Price OOS LOC", correct = TRUE),
          answer("SAT Math",message = 'Which test did she preformed better on?'),
-         answer("Price IS LOC", ),
+         answer("Price IS LOC", message = 'Does she want to be In-State or Out-Of-State?' ),
          allow_retry = TRUE,
          random_answer_order = TRUE
 )
 ```
 
 
-<!-- 2. - Action - **Select**: School Name, ACT Composite, *Out of State* -->
-**NEEDTODO: Grade this using gradethis**
-Create a data frame by selecting the columns that Are imperative to Amber's preference. Use an underscore, '_', rather than a space, ' '. Make sure to type column names in the quotes using correct spelling. 
-```{r amber_pref_Q8, exercise = TRUE, exercise.eval = FALSE}
-amber_pref select(city_college_df,'1st_column_name','2nd_column_name','3rd_column_name')
+```{r}
+oos_city_college_df = city_college_df %>% 
+  filter(State == 'OOS')
 ```
 
 
+<!-- 2. - Action - **Select**: School Name, ACT Composite, *Out of State* -->
+**NEEDTODO: Grade this using gradethis**
+Q. Create a data frame by selecting the columns that Are imperative to Amber's preference. Use an underscore, '_', rather than a space, ' '. Make sure to use correct spelling. 
+```{r amber_pref_Q8, exercise = TRUE, exercise.eval = FALSE}
+amber_pref_df =  select(oos_city_college_df,1st_column_name,2nd_column_name,3rd_column_name)
+```
+We are saving this data frame as *amber_pref_df* to contain columns that only pertain to Amber's preferences.
 
 
 
-
-
-
-```{r}
-
+<!-- Background -->
+```{r include=FALSE}
+amber_pref_df =  select(oos_city_college_df,
+                        School_Name,
+                        ACT_Composite,
+                        Price_OOS_LOC)
 ```
 
 
@@ -224,18 +231,62 @@ amber_pref select(city_college_df,'1st_column_name','2nd_column_name','3rd_colum
 
 
 <!-- 3. Action - **Filter**: Based on Amber's ACT score, filter out all the schools that would accept her based on her ACT score. -->
+Q. Based on Amber's ACT score, create a data frame that only contains schools that has Amber's ACT score and lower. This means you must filter, so that out all the schools that would accept her based on her ACT score.
+```{r amber_pref_Q9, exercise = TRUE, exercise.eval = FALSE}
+act_amber_pref_df = filter(amber_pref_df, write_expression )
+```
 
 
-2. How many schools would accept her based on her ACTs score?
-
-
-- Action - **Filter**: Since Amber wants to go out of state, filter only schools that are out of state.
-3. How many schools would accept her based on her ACTs score that are out of state?
-4. Sort through the data, which school has the lowest ACT Score?
-
+<!-- Background -->
+```{r include=FALSE}
+act_amber_pref_df =  filter(amber_pref_df,
+                        ACT_Composite <= 32)
+```
 
 
 
+```{r amber_pref_Q10, echo = FALSE}
+
+question_numeric(
+  "How many schools would accept her based on her ACTs score?",
+  answer(62, correct = TRUE),
+  allow_retry = TRUE,
+  min = 62,
+  max = 62,
+  step = 0.01
+)
+
+
+```
+
+
+
+
+
+Q. Sort through the data, which school has the lowest ACT Score?
+```{r include=FALSE}
+reactable(act_amber_pref_df)
+```
+
+```{r amber_pref_Q11, echo = FALSE}
+question("Sort through the data, which school has the lowest ACT Score?",
+         answer("Metropolitan State University of Denver", correct = TRUE),
+         answer("Brigham Young University-Provo", 
+                message = "Lowest ACT Score not the highest"),
+         answer("Utah State University", 
+                message = "Not Quite"),
+         answer("Seattle Pacific University", 
+                message = "Not Quite"),
+         answer("Hawaii Pacific University", 
+                message = "Not Quite"),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+)
+```
+
+
+
+Q WHich school do you think Amber should go to?
 
 
 
