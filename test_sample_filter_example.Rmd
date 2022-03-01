@@ -177,15 +177,15 @@ data.frame(`Column_Names` = str_replace_all(colnames(city_college_df),'_',' ')) 
 
 - **OOS** is out of state
 - **IS** is in state
+- **LOC** is living on campus
 
 ## Amber's Preferences
 
-Amber is only interested in the cost of the school, Admissions, ACT composite, going to a school out of state. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her composite score was a 32. 
+Amber is only interested in the school name, Admissions, ACT Composite, Out of state tuitionate. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her composite score was a 32. 
 
 Amber has a scholarship for playing tennis from Dwight F. Davis Memorial Scholarship where she does not have to worry about out of state tuition.
 
-0. Which columns do you think Amber should concentrate on based on her preferences?
-(Select All that apply)
+<!-- 1. Which columns do you think Amber should concentrate on based on her preferences? (Select All that apply) -->
 ```{r amber_pref_Q7, echo = FALSE}
 question("Which columns do you think Amber should concentrate on based on her 
          preferences? (Select All that apply)",
@@ -200,11 +200,31 @@ question("Which columns do you think Amber should concentrate on based on her
 ```
 
 
-- Action - **Select**: School Name, ACT Composite, *Out of State*
+<!-- 2. - Action - **Select**: School Name, ACT Composite, *Out of State* -->
+**NEEDTODO: Grade this using gradethis**
+Create a data frame by selecting the columns that Are imperative to Amber's preference. Use an underscore, '_', rather than a space, ' '. Make sure to type column names in the quotes using correct spelling. 
+```{r amber_pref_Q8, exercise = TRUE, exercise.eval = FALSE}
+amber_pref select(city_college_df,'1st_column_name','2nd_column_name','3rd_column_name')
+```
 
-1. Create a data frame by selecting the columns that Are imperative to Amber's preference. 
 
-- Action - **Filter**: Based on Amber's ACT score, filter out all the schools that would accept her based on her ACT score.
+
+
+
+
+
+
+```{r}
+
+```
+
+
+
+
+
+
+<!-- 3. Action - **Filter**: Based on Amber's ACT score, filter out all the schools that would accept her based on her ACT score. -->
+
 
 2. How many schools would accept her based on her ACTs score?
 
