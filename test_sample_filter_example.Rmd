@@ -18,6 +18,7 @@ library(nycflights13)
 library(Lahman)
 library(kableExtra)
 library(reactable)
+library(gradethis)
 tutorial_options(
   exercise.timelimit = 60,
   # A simple checker function that just returns the message in the check chunk
@@ -37,6 +38,32 @@ source('load_college_data.R')
 
 ```
 
+```{r}
+grader <-
+  # ```{r example-check}
+  grade_this({
+    if (length(.result) != 1) {
+      fail("I expected a single value instead of {length(.result)} values.")
+    }
+    
+    if (is.na(.result)) {
+      fail("I expected a number, but your code returned a missing value.")
+    }
+    
+    avg_height <- mean(Loblolly$height)
+    if (identical(.result, avg_height)) {
+      pass("Great work! The average height is {round(avg_height, 2)}.")
+    }
+    
+    # Always end grade_this() with a default grade.
+    # By default fail() will also give code feedback,
+    # if a solution is available.
+    fail()
+  })
+# ```
+```
+
+
 ## What is a data frame?
 
 ### Everything is stored in a data frame
@@ -51,6 +78,11 @@ Click *Run Code* button to see an example of data frame that has some top artist
 ```{r viewdata, exercise = TRUE, exercise.eval = FALSE}
 music_artist_df
 ```
+
+```{r}
+grader()
+```
+
 
 
 ### Quick Question 1
@@ -71,7 +103,7 @@ question("Which artist had the longest song based on the data frame? ",
 You do not like long songs, so you can <span style="color: blue;">**filter**</span> a data frame to obtain only songs that are strictly less than 4 minutes. The code below will only provide songs that are equal to or more than 4 minutes. 
 
 Change the code so that you have a data frame that has songs strictly less than 4 minutes.
-
+**NEEDTODO: Grade this using gradethis**
 ```{r filter_song1, exercise = TRUE, exercise.eval = FALSE}
 filter(music_artist_df,Length >= 4)
 ```
