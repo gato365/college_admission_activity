@@ -44,10 +44,10 @@ source('load_college_data.R')
 
 ### Everything is stored in a data frame
 A <span style="color: red;">**data frame**</span> consists of rows and columns. 
- 
- - the <span style="color: red;">**rows**</span> represent observations 
- - the <span style="color: red;">**columns**</span> represent the information collected on each observation. 
- 
+
+- the <span style="color: red;">**rows**</span> represent observations 
+- the <span style="color: red;">**columns**</span> represent the information collected on each observation. 
+
 Click *Run Code* button to see an example of data frame that has some top artist from last year's billboard chart.
 
 
@@ -147,9 +147,7 @@ question("What is the purpose of select function? ",
 
 ## Internship Opportunity
 
-Based on your experience programming, your guidance counselor wants you to help your friends determine which schools to apply to. These friends happen to be triplets (Amber, Jake, and Olivia). However, they  do not know where they want to go. Their parents gave them the option of selecting schools in either Hawaii, Oregon, Utah, Nevada, California, Colorado, or Washington. Their parent’s rationale is that the triplets know their relatives in these states. 
-
-All siblings want to live on campus so that they can get the real college experience. You also know that they would like to be in a city because they always wanted to be near a lot of people. They know that they will not go to the same school because they have different criteria that are important to them. 
+Based on your experience programming, your guidance counselor wants you to help your friend determine which schools she should apply to. Your friend's name is Amber and she does not know where she wants to go. Amber's parents gave her the option of selecting schools in either Hawaii, Oregon, Utah, Nevada, California, Colorado, or Washington. Her parent’s rationale is that the she knows their relatives in these states. Amber wants to live on campus so that she can get the real college experience. She would like to be in a city because she always wanted to be near a lot of people.
 
 ### Questions About the Scenario
 
@@ -176,7 +174,7 @@ question_numeric(
 question("What type of college campus does the triplets want to live in?",
          answer("City", correct = TRUE),
          answer("Suburban", message = "Read the second paragraph again"),
-          answer("Rural", message = "Read the second paragraph again"),
+         answer("Rural", message = "Read the second paragraph again"),
          allow_retry = TRUE
 )
 ```
@@ -242,20 +240,24 @@ oos_city_college_df = city_college_df %>%
 
 ### Select Relevant Variables
 <!-- 2. - Action - **Select**: School Name, ACT Composite, *Out of State* -->
-Create a data frame by selecting the columns that Are imperative to Amber's preference. Use an underscore, '_', rather than a space, ' '. Make sure to use correct spelling. 
-```{r amber_pref_Q10, exercise = TRUE, exercise.eval = FALSE}
-amber_pref_df =  select(oos_city_college_df,1st_column_name,2nd_column_name,3rd_column_name)
+
+
+```{r amber_pref_Q10, echo = FALSE}
+question("Which line of code represents the correct way of selecting the relevant variables?",
+         answer("select(oos_city_college_df,School_Name,ACT_Composite,Price_OOS_LOC)", correct = TRUE),
+         answer("select(School_Name, oos_city_college_df,ACT_Composite,Price_OOS_LOC)",
+                message = 'The data frame must be the 1st input'),
+         answer("select(oos_city_college_df,School_Name,ACT_Composite)",
+                message = 'Remember all the variables'),
+         answer("select(oos_city_college_df,School_Name,ACT_Composite,Price_OOS_LOC,SAT_Math)",
+                message = 'This has too many variables. Double check which variables are important'),
+         answer("select(oos_city_college_df,School_Name,Price_OOS_LOC,SAT_Math)",
+                message = 'Make SUre you selected the right variables'),
+         allow_retry = TRUE,
+         random_answer_order = TRUE
+)
 ```
 
-
-
-```{r amber_pref_Q10-solution}
-select(oos_city_college_df,School_Name,ACT_Composite,Price_OOS_LOC)
-```
-
-```{r amber_pref_Q10-check}
-grade_this_code("Amazing work!")
-```
 
 We are saving this data frame as *amber_pref_df* to contain columns that only pertain to Amber's preferences.
 
@@ -292,7 +294,7 @@ grade_this_code("Amazing work!")
 <!-- Background -->
 ```{r include=FALSE}
 act_amber_pref_df =  filter(amber_pref_df,
-                        ACT_Composite <= 32)
+                            ACT_Composite <= 32)
 ```
 
 
@@ -337,6 +339,4 @@ question("Sort through the data, which school has the lowest ACT Score?",
 ```
 
 
-
-Q. WHich school do you think Amber should go to?
 
