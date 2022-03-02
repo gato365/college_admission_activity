@@ -1,0 +1,31 @@
+---
+title: "Example"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+
+tutorial_options(exercise.checker = gradethis::grade_learnr)
+knitr::opts_chunk$set(out.width = "100%")
+```
+
+## Welcome
+
+### `mtcars`
+
+To see the `mtcars` data frame, type `mtcars` in the code block below and click "Submit Answer".
+
+```{r ex, exercise = TRUE}
+
+```
+
+```{r ex-solution}
+mtcars
+```
+
+```{r ex-check}
+grade_code("Good job!")
+```
