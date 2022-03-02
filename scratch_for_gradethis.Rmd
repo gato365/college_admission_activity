@@ -5,7 +5,7 @@ output:
     progressive: true
     allow_skip: true
 runtime: shiny_prerendered
-description:
+description: 'learning'
 
 ---
 ```{r setup, include=FALSE}
