@@ -1,0 +1,32 @@
+---
+title: "Learning Gradethis functionality"
+output:
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+description:
+
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(learnr)
+library(gradethis)
+```
+
+
+
+```{r load-package, exercise = TRUE}
+___(tidyverse)
+___(dsbox)
+```
+
+```{r load-package-solution}
+library(tidyverse)
+library(dsbox)
+```
+
+```{r load-package-check}
+grade_this_code("The tidyverse and dsbox packages you'll use in this analysis are now loaded!")
+```
