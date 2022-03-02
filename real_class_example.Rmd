@@ -67,19 +67,17 @@ question("Which artist had the longest song based on the data frame? ",
          allow_retry = TRUE,
          random_answer_order = TRUE
 )
-```
-
-```{r}
 gradethis_setup()
 ```
-
 
 ## Title
 
 ### Long Songs
 You do not like long songs, so you can <span style="color: blue;">**filter**</span> a data frame to obtain only songs that are strictly less than 4 minutes. The code below will only provide songs that are equal to or more than 4 minutes. 
 
-Change the code so that you have a data frame that has songs strictly less than 4 minutes.
+### Quick Question 2
+
+**Change the code so that you have a data frame that has songs strictly less than 4 minutes.**
 
 
 
@@ -111,9 +109,14 @@ question("What is the purpose of filter function? ",
 
 
 ## The Titles and Artists
+
+### Important Columns
 Lets start off with the original music artist data frame. Lets say you want primarily focus on the Artist and Title columns, you can just <span style="color: blue;">**Select**</span> those columns. The code below only selects the Artist and Length.
 
-Change the code so that you have a data frame that consists of the Artist and Title.
+
+## Quick Question 4
+**Change the code so that you have a data frame that consists of the Artist and Title.**
+
 
 ```{r select_column1_Q4, exercise = TRUE, exercise.eval = FALSE}
 select(music_artist_df,Artist, Length)
@@ -127,9 +130,6 @@ select(music_artist_df,Artist, Title)
 ```{r select_column1_Q4-check}
 grade_this_code("You did it!")
 ```
-
-
-
 
 
 
@@ -147,9 +147,12 @@ question("What is the purpose of select function? ",
 
 ## Internship Opportunity
 
-Based on your experience programming, your guidance counselor wants you to help your friend determine which schools she should apply to. Your friend's name is Amber and she does not know where she wants to go. Amber's parents gave her the option of selecting schools in either Hawaii, Oregon, Utah, Nevada, California, Colorado, or Washington. Her parent’s rationale is that the she knows their relatives in these states. Amber wants to live on campus so that she can get the real college experience. She would like to be in a city because she always wanted to be near a lot of people.
+### Description
+Based on your experience programming, your guidance counselor wants you to help your friend determine which schools she should apply to. Your friend's name is Amber and she does not know where she wants to go. 
 
-### Questions About the Scenario
+Amber's parents gave her the option of selecting schools in either Hawaii, Oregon, Utah, Nevada, California, Colorado, or Washington. Her parent’s rationale is that the she knows their relatives in these states. 
+
+Amber wants to live on campus so that she can get the real college experience. She would like to be in a city because she always wanted to be near a lot of people.
 
 
 ### Quick Question 6
@@ -169,7 +172,7 @@ question_numeric(
 ```
 
 
-
+### Quick Question 7
 ```{r descrip_Q7, echo = FALSE}
 question("What type of college campus does the triplets want to live in?",
          answer("City", correct = TRUE),
@@ -180,7 +183,7 @@ question("What type of college campus does the triplets want to live in?",
 ```
 
 
-
+### Quick Question 8
 
 ```{r descrip_Q8, echo = FALSE}
 question("Do all siblings want to go to the same school? ",
@@ -217,6 +220,8 @@ Amber is only interested in the school name, ACT Composite, Out of state tuition
 
 Amber has a scholarship for playing tennis from Dwight F. Davis Memorial Scholarship where she does not have to worry about out of state tuition.
 
+
+### Quick Question 9
 <!-- 1. Which columns do you think Amber should concentrate on based on her preferences? (Select All that apply) -->
 ```{r amber_pref_Q9, echo = FALSE}
 question("Which columns do you think Amber should concentrate on based on her 
@@ -238,9 +243,9 @@ oos_city_college_df = city_college_df %>%
 ```
 
 
-### Select Relevant Variables
-<!-- 2. - Action - **Select**: School Name, ACT Composite, *Out of State* -->
 
+<!-- 2. - Action - **Select**: School Name, ACT Composite, *Out of State* -->
+### Quick Question 10: 
 
 ```{r amber_pref_Q10, echo = FALSE}
 question("Which line of code represents the correct way of selecting the relevant variables?",
@@ -278,6 +283,8 @@ amber_pref_df =  select(oos_city_college_df,
 ### Filter based on ACT Composite Scores
 <!-- 3. Action - **Filter**: Based on Amber's ACT score, filter out all the schools that would accept her based on her ACT score. -->
 Based on Amber's ACT score, create a data frame that only contains schools that has Amber's ACT score and lower. This means you must filter, so that out all the schools that would accept her based on her ACT score.
+
+### Quick Question 11
 ```{r amber_pref_Q11, exercise = TRUE, exercise.eval = FALSE}
 act_amber_pref_df = filter(amber_pref_df, write_expression )
 ```
@@ -298,7 +305,7 @@ act_amber_pref_df =  filter(amber_pref_df,
 ```
 
 
-
+### Quick Question 12
 ```{r amber_pref_Q12, echo = FALSE}
 
 question_numeric(
@@ -316,12 +323,12 @@ question_numeric(
 
 
 
-### Analyze ACT Score
+
 Sort through the data, which school has the lowest ACT Score?
 ```{r include=FALSE}
 reactable(act_amber_pref_df)
 ```
-
+### Quick Question 13
 ```{r amber_pref_Q13, echo = FALSE}
 question("Sort through the data, which school has the lowest ACT Score?",
          answer("Metropolitan State University of Denver", correct = TRUE),
