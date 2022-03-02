@@ -38,30 +38,6 @@ source('load_college_data.R')
 
 ```
 
-```{r}
-grader <-
-  # ```{r example-check}
-  grade_this({
-    if (length(.result) != 1) {
-      fail("I expected a single value instead of {length(.result)} values.")
-    }
-    
-    if (is.na(.result)) {
-      fail("I expected a number, but your code returned a missing value.")
-    }
-    
-    avg_height <- mean(Loblolly$height)
-    if (identical(.result, avg_height)) {
-      pass("Great work! The average height is {round(avg_height, 2)}.")
-    }
-    
-    # Always end grade_this() with a default grade.
-    # By default fail() will also give code feedback,
-    # if a solution is available.
-    fail()
-  })
-# ```
-```
 
 
 ## What is a data frame?
@@ -79,10 +55,6 @@ Click *Run Code* button to see an example of data frame that has some top artist
 music_artist_df
 ```
 
-```{r}
-grader()
-```
-
 
 
 ### Quick Question 1
@@ -97,21 +69,37 @@ question("Which artist had the longest song based on the data frame? ",
 )
 ```
 
+```{r}
+gradethis_setup()
+```
+
+
 ## Title
 
 ### Long Songs
 You do not like long songs, so you can <span style="color: blue;">**filter**</span> a data frame to obtain only songs that are strictly less than 4 minutes. The code below will only provide songs that are equal to or more than 4 minutes. 
 
 Change the code so that you have a data frame that has songs strictly less than 4 minutes.
-**NEEDTODO: Grade this using gradethis**
-```{r filter_song1, exercise = TRUE, exercise.eval = FALSE}
+
+
+
+```{r filter_song1_Q2, exercise = TRUE, exercise.eval = FALSE}
 filter(music_artist_df,Length >= 4)
 ```
 
+```{r filter_song1_Q2-solution}
+filter(music_artist_df,Length < 4)
+```
 
-### Quick Question 2
+```{r filter_song1_Q2-check}
+grade_this_code("You did it!")
+```
 
-```{r filter_Q2, echo = FALSE}
+
+
+### Quick Question 3
+
+```{r filter_Q3, echo = FALSE}
 question("What is the purpose of filter function? ",
          answer("Filter rows based on a condition", correct = TRUE),
          answer("Filter columns based on a condition", message = "What reduced: rows or columns"),
@@ -127,14 +115,27 @@ Lets start off with the original music artist data frame. Lets say you want prim
 
 Change the code so that you have a data frame that consists of the Artist and Title.
 
-```{r select_column1, exercise = TRUE, exercise.eval = FALSE}
+```{r select_column1_Q4, exercise = TRUE, exercise.eval = FALSE}
 select(music_artist_df,Artist, Length)
 ```
 
 
-### Quick Question 3
+```{r select_column1_Q4-solution}
+select(music_artist_df,Artist, Title)
+```
 
-```{r select_Q3, echo = FALSE}
+```{r select_column1_Q4-check}
+grade_this_code("You did it!")
+```
+
+
+
+
+
+
+### Quick Question 5
+
+```{r select_Q5, echo = FALSE}
 question("What is the purpose of select function? ",
          answer("Selects columns", correct = TRUE),
          answer("Selects rows", message = "What reduced: rows or columns"),
@@ -153,9 +154,9 @@ All siblings want to live on campus so that they can get the real college experi
 ### Questions About the Scenario
 
 
-### Quick Question 4
+### Quick Question 6
 
-```{r descrip_Q4, echo = FALSE}
+```{r descrip_Q6, echo = FALSE}
 
 question_numeric(
   "How many states are they able to apply to based on their parents request?",
@@ -171,7 +172,7 @@ question_numeric(
 
 
 
-```{r descrip_Q5, echo = FALSE}
+```{r descrip_Q7, echo = FALSE}
 question("What type of college campus does the triplets want to live in?",
          answer("City", correct = TRUE),
          answer("Suburban", message = "Read the second paragraph again"),
@@ -183,7 +184,7 @@ question("What type of college campus does the triplets want to live in?",
 
 
 
-```{r descrip_Q6, echo = FALSE}
+```{r descrip_Q8, echo = FALSE}
 question("Do all siblings want to go to the same school? ",
          answer("No", correct = TRUE),
          answer("Yes", message = "Read the second paragraph again"),
@@ -219,7 +220,7 @@ Amber is only interested in the school name, ACT Composite, Out of state tuition
 Amber has a scholarship for playing tennis from Dwight F. Davis Memorial Scholarship where she does not have to worry about out of state tuition.
 
 <!-- 1. Which columns do you think Amber should concentrate on based on her preferences? (Select All that apply) -->
-```{r amber_pref_Q7, echo = FALSE}
+```{r amber_pref_Q9, echo = FALSE}
 question("Which columns do you think Amber should concentrate on based on her 
          preferences? (Select All that apply)",
          answer("School Name", correct = TRUE),
@@ -242,9 +243,22 @@ oos_city_college_df = city_college_df %>%
 <!-- 2. - Action - **Select**: School Name, ACT Composite, *Out of State* -->
 **NEEDTODO: Grade this using gradethis**
 Q. Create a data frame by selecting the columns that Are imperative to Amber's preference. Use an underscore, '_', rather than a space, ' '. Make sure to use correct spelling. 
-```{r amber_pref_Q8, exercise = TRUE, exercise.eval = FALSE}
+```{r amber_pref_Q10, exercise = TRUE, exercise.eval = FALSE}
 amber_pref_df =  select(oos_city_college_df,1st_column_name,2nd_column_name,3rd_column_name)
 ```
+
+
+
+```{r amber_pref_Q10-solution}
+select(oos_city_college_df,School_Name,ACT_Composite,Price_OOS_LOC)
+```
+
+```{r amber_pref_Q10-check}
+grade_this_code("Amazing work!")
+```
+
+
+
 We are saving this data frame as *amber_pref_df* to contain columns that only pertain to Amber's preferences.
 
 
