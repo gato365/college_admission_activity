@@ -6,9 +6,7 @@ output:
     allow_skip: true
 runtime: shiny_prerendered
 description: >
-  Learn how to filter observations in a data frame. Use `filter()` to extract
-  observations from a data frame, and use `&`, `|`, and `!` to write logical
-  tests.
+  Learn about data frames. Learn how to filter observations and select columns in a data frame. 
 ---
 
 ```{r setup, include=FALSE}
@@ -48,7 +46,7 @@ A <span style="color: red;">**data frame**</span> consists of rows and columns.
 - the <span style="color: red;">**rows**</span> represent observations 
 - the <span style="color: red;">**columns**</span> represent the information collected on each observation. 
 
-Click *Run Code* button to see an example of data frame that has some top artist from last year's billboard chart.
+Click *Run Code* button to see an example of data frame that has some top Artist from last year's billboard chart.
 
 
 ```{r viewdata, exercise = TRUE, exercise.eval = FALSE}
@@ -70,27 +68,31 @@ question("Which artist had the longest song based on the data frame? ",
 gradethis_setup()
 ```
 
-## Title
+## The length of some songs
 
 ### Long Songs
-You do not like long songs, so you can <span style="color: blue;">**filter**</span> a data frame to obtain only songs that are strictly less than 4 minutes. The code below will only provide songs that are equal to or more than 4 minutes. 
+You do not like long songs, so you can <span style="color: blue;">**filter**</span> a data frame to obtain only songs that are strictly less than 4 minutes. Click *Run Code* to be able to view the songs duration that are 4 minutes or more. 
+
+```{r filter_song1, exercise = TRUE, exercise.eval = FALSE}
+filter(music_artist_df,Song_Duration >= 4)
+```
 
 ### Quick Question 2
 
-**Change the code so that you have a data frame that has songs strictly less than 4 minutes.**
+**Change the mathematical expression so that you have a data frame that has songs strictly less than 4 minutes.**
 
 
 
 ```{r filter_song1_Q2, exercise = TRUE, exercise.eval = FALSE}
-filter(music_artist_df,Length >= 4)
+filter(music_artist_df,Song_Duration >= 4)
 ```
 
 ```{r filter_song1_Q2-solution}
-filter(music_artist_df,Length < 4)
+filter(music_artist_df,Song_Duration < 4)
 ```
 
 ```{r filter_song1_Q2-check}
-grade_this_code("You did it!")
+grade_this_code("You did it, keep up the good work!")
 ```
 
 
@@ -98,9 +100,10 @@ grade_this_code("You did it!")
 ### Quick Question 3
 
 ```{r filter_Q3, echo = FALSE}
-question("What is the purpose of filter function? ",
+question("What is the purpose of the filter function? ",
          answer("Filter rows based on a condition", correct = TRUE),
-         answer("Filter columns based on a condition", message = "What reduced: rows or columns"),
+         answer("Filter columns based on a condition", 
+                message = "What reduced: rows or columns"),
          allow_retry = TRUE,
          random_answer_order = TRUE
 )
@@ -111,7 +114,7 @@ question("What is the purpose of filter function? ",
 ## The Titles and Artists
 
 ### Important Columns
-Lets start off with the original music artist data frame. Lets say you want primarily focus on the Artist and Title columns, you can just <span style="color: blue;">**Select**</span> those columns. The code below only selects the Artist and Length.
+Lets start off with the original music artist data frame. Lets say you want primarily focus on the *Artist* and *Title* columns, you can just <span style="color: blue;">**select**</span> those columns. The code below only selects the Artist and Length.
 
 
 ### Quick Question 4
@@ -119,16 +122,16 @@ Lets start off with the original music artist data frame. Lets say you want prim
 
 
 ```{r select_column1_Q4, exercise = TRUE, exercise.eval = FALSE}
-select(music_artist_df,Artist, Length)
+select(music_artist_df, Artist, Length)
 ```
 
 
 ```{r select_column1_Q4-solution}
-select(music_artist_df,Artist, Title)
+select(music_artist_df, Artist, Title)
 ```
 
 ```{r select_column1_Q4-check}
-grade_this_code("You did it!")
+grade_this_code("Keep going!")
 ```
 
 
@@ -136,7 +139,7 @@ grade_this_code("You did it!")
 ### Quick Question 5
 
 ```{r select_Q5, echo = FALSE}
-question("What is the purpose of select function? ",
+question("What is the purpose of the select function? ",
          answer("Selects columns", correct = TRUE),
          answer("Selects rows", message = "What reduced: rows or columns"),
          allow_retry = TRUE,
@@ -148,7 +151,7 @@ question("What is the purpose of select function? ",
 ## Internship Opportunity
 
 ### Description
-Based on your experience programming, your guidance counselor wants you to help your friend determine which schools she should apply to. Your friend's name is Amber and she does not know where she wants to go. 
+Based on your experience programming, your guidance counselor wants you to help Amber, your friend, determine which schools she should apply to based on certain criteria.
 
 Amber's parents gave her the option of selecting schools in either Hawaii, Oregon, Utah, Nevada, California, Colorado, or Washington. Her parent’s rationale is that the she knows their relatives in these states. 
 
@@ -195,11 +198,20 @@ question("Does Amber want to live on campus or off campus? ",
 )
 ```
 
-## Data Frame Based on the Triplets
+## View the Data
+
+### Look at the Data
 Click *Run Code* to view the first 6 rows of 
 ```{r view_college_data, exercise = TRUE, exercise.eval = FALSE}
 head(city_college_df)
 ```
+
+Abbreviations: 
+
+- **OOS** is Out-Of-State
+- **IS** is In-State
+- **LOC** is living on campus
+
 
 <!-- Might Delete because it is redundant -->
 ### Columns
@@ -211,19 +223,15 @@ data.frame(`Column_Names` = str_replace_all(colnames(city_college_df),'_',' ')) 
   kable_styling()
 ```
 
-- **OOS** is Out-Of-State
-- **IS** is In-State
-- **LOC** is living on campus
-
 ## Amber's Preferences
 
-Amber is only interested in the school name, ACT Composite, Out of state tuition. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her composite score was a 32. 
+Amber is only interested in the school name, ACT Composite, and Out of state tuition. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her composite score was a 32. 
 
-Amber has a scholarship for playing tennis from Dwight F. Davis Memorial Scholarship where she does not have to worry about out of state tuition.
+Amber earned the Dwight F. Davis Memorial Scholarship for playing tennis, therefore, she does not have to worry about out of state tuition.
 
 
 ### Quick Question 9
-<!-- 1. Which columns do you think Amber should concentrate on based on her preferences? (Select All that apply) -->
+
 ```{r amber_pref_Q9, echo = FALSE}
 question("Which columns do you think Amber should concentrate on based on her 
          preferences? (Select All that apply)",
