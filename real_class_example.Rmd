@@ -4,6 +4,7 @@ output:
   learnr::tutorial:
     progressive: true
     allow_skip: true
+    theme: "sandstone"
 runtime: shiny_prerendered
 description: >
   Learn about data frames. Learn how to filter observations and select columns in a data frame. 
