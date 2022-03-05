@@ -164,7 +164,7 @@ Amber wants to live on campus so that she can get the real college experience. S
 ```{r descrip_Q6, echo = FALSE}
 
 question_numeric(
-  "How many states are they able to apply to based on their parents request?",
+  "How many states are they able to apply to based on their parents request? Provide an actual number." ,
   answer(7, correct = TRUE),
   allow_retry = TRUE,
   min = 7,
@@ -315,6 +315,14 @@ act_amber_pref_df =  filter(amber_pref_df,
 ```
 
 
+
+### Look Over Amber's Data Frame of Schools
+```{r amber_pref_Q12_num, exercise = TRUE, exercise.eval = FALSE}
+act_amber_pref_df
+```
+
+
+
 ### Quick Question 12
 ```{r amber_pref_Q12, echo = FALSE}
 
@@ -335,9 +343,7 @@ question_numeric(
 
 ### Quick Question 13
 Sort through the data, which school has the lowest ACT Score?
-```{r}
-reactable(act_amber_pref_df)
-```
+
 
 ```{r amber_pref_Q13, echo = FALSE}
 question("Sort through the data, which school has the lowest ACT Score?",
