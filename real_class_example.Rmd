@@ -327,7 +327,7 @@ act_amber_pref_df =  filter(amber_pref_df,
 Look over her data frame. 
 
 
-```{r include=FALSE}
+```{r echo=FALSE}
 reactable(act_amber_pref_df)
 ```
 
