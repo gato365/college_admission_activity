@@ -226,7 +226,7 @@ data.frame(`Column_Names` = str_replace_all(colnames(city_college_df),'_',' ')) 
 
 ## Amber's Preferences
 
-Amber is only interested in the school name, ACT Composite, and Out of state tuition. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her composite score was a 32. 
+Amber is only interested in the school name, ACT Score, and out of state tuition. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her score was a 32. 
 
 Amber earned the Dwight F. Davis Memorial Scholarship for playing tennis, therefore, she does not have to worry about out of state tuition.
 
@@ -237,9 +237,9 @@ Amber earned the Dwight F. Davis Memorial Scholarship for playing tennis, theref
 question("Which columns do you think Amber should concentrate on based on her 
          preferences? (Select All that apply)",
          answer("School Name", correct = TRUE),
-         answer("ACT Composite", correct = TRUE),
+         answer("ACT Score", correct = TRUE),
          answer("Price OOS LOC", correct = TRUE),
-         answer("SAT Math",message = 'Which test did she preformed better on?'),
+         answer("SAT Score",message = 'Which test did she preformed better on?'),
          answer("Price IS LOC", message = 'Does she want to be In-State or Out-Of-State?' ),
          allow_retry = TRUE,
          random_answer_order = TRUE
@@ -259,14 +259,14 @@ oos_city_college_df = city_college_df %>%
 
 ```{r amber_pref_Q10, echo = FALSE}
 question("Which line of code represents the correct way of selecting the relevant variables?",
-         answer("select(oos_city_college_df,School_Name,ACT_Composite,Price_OOS_LOC)", correct = TRUE),
-         answer("select(School_Name, oos_city_college_df,ACT_Composite,Price_OOS_LOC)",
+         answer("select(oos_city_college_df,School_Name,ACT_Score,Price_OOS_LOC)", correct = TRUE),
+         answer("select(School_Name, oos_city_college_df,ACT_Score,Price_OOS_LOC)",
                 message = 'The data frame must be the 1st input'),
-         answer("select(oos_city_college_df,School_Name,ACT_Composite)",
+         answer("select(oos_city_college_df,School_Name,ACT_Score)",
                 message = 'Remember all the variables'),
-         answer("select(oos_city_college_df,School_Name,ACT_Composite,Price_OOS_LOC,SAT_Math)",
+         answer("select(oos_city_college_df,School_Name,ACT_Score,Price_OOS_LOC,SAT_Score)",
                 message = 'This has too many variables. Double check which variables are important'),
-         answer("select(oos_city_college_df,School_Name,Price_OOS_LOC,SAT_Math)",
+         answer("select(oos_city_college_df,School_Name,Price_OOS_LOC,SAT_Score)",
                 message = 'Make SUre you selected the right variables'),
          allow_retry = TRUE,
          random_answer_order = TRUE
@@ -282,7 +282,7 @@ We are saving this data frame as *amber_pref_df* to contain columns that only pe
 ```{r include=FALSE}
 amber_pref_df =  select(oos_city_college_df,
                         School_Name,
-                        ACT_Composite,
+                        ACT_Score,
                         Price_OOS_LOC)
 ```
 
@@ -290,17 +290,23 @@ amber_pref_df =  select(oos_city_college_df,
 
 
 
-### Filter based on ACT Composite Scores
-<!-- 3. Action - **Filter**: Based on Amber's ACT score, filter out all the schools that would accept her based on her ACT score. -->
+### Filter based on ACT Scores
+
 Based on Amber's ACT score, create a data frame that only contains schools that has Amber's ACT score and lower. This means you must filter, so that out all the schools that would accept her based on her ACT score.
 
+
+
+
+
 ### Quick Question 11
+
+**Erase write expression to filter schools that will accept her score or less.**
 ```{r amber_pref_Q11, exercise = TRUE, exercise.eval = FALSE}
 act_amber_pref_df = filter(amber_pref_df, write_expression )
 ```
 
 ```{r amber_pref_Q11-solution}
-act_amber_pref_df = filter(amber_pref_df,  ACT_Composite <= 32 )
+act_amber_pref_df = filter(amber_pref_df,  ACT_Score <= 32 )
 ```
 
 ```{r amber_pref_Q11-check}
@@ -311,7 +317,7 @@ grade_this_code("Amazing work!")
 <!-- Background -->
 ```{r include=FALSE}
 act_amber_pref_df =  filter(amber_pref_df,
-                            ACT_Composite <= 32)
+                            ACT_Score <= 32)
 ```
 
 
@@ -320,8 +326,9 @@ act_amber_pref_df =  filter(amber_pref_df,
 
 Look over her data frame. 
 
-```{r amber_pref_Q12_num, exercise = TRUE, exercise.eval = FALSE}
-act_amber_pref_df
+
+```{r include=FALSE}
+reactable(act_amber_pref_df)
 ```
 
 
