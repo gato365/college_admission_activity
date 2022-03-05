@@ -48,3 +48,8 @@ new_column_names <- str_replace_all(colnames(city_college_df),' ','_') %>%
   str_replace_all('In-State','IS') 
 
 colnames(city_college_df) <- new_column_names 
+
+city_college_df = city_college_df %>% 
+  rename(ACT_Score = ACT_Composite,
+         SAT_Score = SAT_Math)
+
