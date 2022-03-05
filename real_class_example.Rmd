@@ -316,7 +316,10 @@ act_amber_pref_df =  filter(amber_pref_df,
 
 
 
-### Look Over Amber's Data Frame of Schools
+### Amber's Data Frame of Schools based on her ACT score
+
+Look over her data frame. 
+
 ```{r amber_pref_Q12_num, exercise = TRUE, exercise.eval = FALSE}
 act_amber_pref_df
 ```
@@ -328,10 +331,10 @@ act_amber_pref_df
 
 question_numeric(
   "How many schools would accept her based on her ACTs score?",
-  answer(62, correct = TRUE),
+  answer(33, correct = TRUE),
   allow_retry = TRUE,
-  min = 62,
-  max = 62,
+  min = 33,
+  max = 33,
   step = 0.01
 )
 
