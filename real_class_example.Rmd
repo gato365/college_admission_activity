@@ -228,6 +228,12 @@ data.frame(`Column_Names` = str_replace_all(colnames(city_college_df),'_',' ')) 
   kable_styling()
 ```
 
+Abbreviations: 
+
+- **OOS** is Out-Of-State
+- **IS** is In-State
+- **LOC** is living on campus
+
 ## Amber's Preferences
 
 Amber is only interested in the school name, ACT Score, and out of state tuition. Amber also did better on her ACTs compared to her SATs so she only submitted her ACTs score where her score was a 32. 
@@ -304,7 +310,7 @@ Based on Amber's ACT score, create a data frame that only contains schools that 
 
 ### Quick Question 11
 
-**Erase write expression to filter schools that will accept her score or less.**
+**Erase write expression to filter schools that will accept her score or less. (Hint: use ACT_Score)**
 ```{r amber_pref_Q11, exercise = TRUE, exercise.eval = FALSE}
 act_amber_pref_df = filter(amber_pref_df, write_expression )
 ```
