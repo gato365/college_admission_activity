@@ -72,7 +72,11 @@ gradethis_setup()
 ## The length of some songs
 
 ### Long Songs
-You do not like long songs, so you can <span style="color: blue;">**filter**</span> a data frame to obtain only songs that are strictly less than 4 minutes. Click *Run Code* to be able to view the songs duration that are 4 minutes or more. 
+You do not like long songs, so you can <span style="color: blue;">**filter**</span> a data frame to obtain only songs that are strictly less than 4 minutes. 
+
+The filter function subset rows using column values
+
+Click *Run Code* to be able to view the songs duration that are 4 minutes or more. 
 
 ```{r filter_song1, exercise = TRUE, exercise.eval = FALSE}
 filter(music_artist_df,Song_Duration >= 4)
@@ -102,9 +106,9 @@ grade_this_code("You did it, keep up the good work!")
 
 ```{r filter_Q3, echo = FALSE}
 question("What is the purpose of the filter function? ",
-         answer("Filter rows based on a condition", correct = TRUE),
+         answer("Filter rows that satisfies a condition", correct = TRUE),
          answer("Filter columns based on a condition", 
-                message = "What reduced: rows or columns"),
+                message = "What's reduced? rows or columns"),
          allow_retry = TRUE,
          random_answer_order = TRUE
 )
@@ -141,8 +145,8 @@ grade_this_code("Keep going!")
 
 ```{r select_Q5, echo = FALSE}
 question("What is the purpose of the select function? ",
-         answer("Selects columns", correct = TRUE),
-         answer("Selects rows", message = "What reduced: rows or columns"),
+         answer("Selects columns based on specifications", correct = TRUE),
+         answer("Selects rows based on specifications", message = "What reduced? rows or columns"),
          allow_retry = TRUE,
          random_answer_order = TRUE
 )
