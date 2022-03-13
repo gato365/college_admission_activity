@@ -84,7 +84,7 @@ filter(music_artist_df,Song_Duration >= 4)
 
 ### Quick Question 2
 
-**Change the mathematical expression so that you have a data frame that has songs strictly less than 4 minutes.**
+**Change the mathematical expression, $<=$, so that you have a data frame that has songs strictly less than 4 minutes.** Press *Submit Answer* when your complete.
 
 
 
@@ -206,9 +206,9 @@ question("Does Amber want to live on campus or off campus? ",
 ## View the Data
 
 ### Look at the Data
-Click *Run Code* to view the first 6 rows of 
+Click *Run Code* to view column names
 ```{r view_college_data, exercise = TRUE, exercise.eval = FALSE}
-head(city_college_df)
+colnames(city_college_df)
 ```
 
 Abbreviations: 
@@ -383,3 +383,4 @@ question("Sort through the data, which school has the lowest ACT Score?",
 
 
 
+Thank you for completing this program. Please visit GATO365.com for more content.
