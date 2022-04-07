@@ -70,7 +70,7 @@ question("Which artist had the longest song based on the data frame? ",
 gradethis_setup()
 ```
 
-## The length of some songs
+## The Length of a Song
 
 ### Long Songs
 You do not like long songs, so you can <span style="color: blue;">**filter**</span> a data frame to obtain only songs that are strictly less than 4 minutes. 
@@ -85,7 +85,7 @@ filter(music_artist_df,Song_Duration >= 4)
 
 ### Quick Question 2
 
-**Change the mathematical expression, $>=$, so that you have a data frame that has songs strictly less than 4 minutes.** Press *Submit Answer* when your complete.
+**Change the mathematical expression, $>=$, so that you have a data frame that has songs strictly less than 4 minutes.** Press *Submit Answer* when you're complete.
 
 
 
@@ -107,7 +107,7 @@ grade_this_code("You did it, keep up the good work!")
 
 ```{r filter_Q3, echo = FALSE}
 question("What is the purpose of the filter function? ",
-         answer("Filter rows that satisfies a condition", correct = TRUE),
+         answer("Filter rows that satisfy a condition", correct = TRUE),
          answer("Filter columns based on a condition", 
                 message = "What's reduced? rows or columns"),
          allow_retry = TRUE,
@@ -159,7 +159,7 @@ question("What is the purpose of the select function? ",
 ### Description
 Based on your experience programming, your guidance counselor wants you to help Amber, your friend, determine which schools she should apply to based on certain criteria.
 
-Amber's parents gave her the option of selecting schools in either Hawaii, Oregon, Utah, Nevada, California, Colorado, or Washington. Her parent’s rationale is that the she knows their relatives in these states. 
+Amber's parents gave her the option of selecting schools in either Hawaii, Oregon, Utah, Nevada, California, Colorado, or Washington. Her parent's rationale is that the she knows their relatives in these states. 
 
 Amber wants to live on campus so that she can get the real college experience. She would like to be in a city because she always wanted to be near a lot of people.
 
@@ -169,7 +169,7 @@ Amber wants to live on campus so that she can get the real college experience. S
 ```{r descrip_Q6, echo = FALSE}
 
 question_numeric(
-  "How many states are they able to apply to based on their parents request? Provide an actual number." ,
+  "How many states are they able to apply to based on their parent's request? Provide an actual number." ,
   answer(7, correct = TRUE),
   allow_retry = TRUE,
   min = 7,
@@ -195,10 +195,10 @@ question("What type of college campus does Amber want to live in?",
 ### Quick Question 8
 
 ```{r descrip_Q8, echo = FALSE}
-question("Does Amber want to live on campus or off campus? ",
-         answer("On Campus", correct = TRUE),
-         answer("Off Campus", message = "Read the second paragraph again"),
-         answer("It depends where her friends live",  message = "Read the second paragraph again"),
+question("Does Amber want to live on campus or off-campus? ",
+         answer("On-Campus", correct = TRUE),
+         answer("Off-Campus", message = "Read the second paragraph again"),
+         answer("It depends on where her friends live",  message = "Read the second paragraph again"),
          answer("It does not matter",  message = "Read the second paragraph again"),
          allow_retry = TRUE
 )
@@ -311,7 +311,7 @@ Based on Amber's ACT score, create a data frame that only contains schools that 
 
 ### Quick Question 11
 
-**Erase write expression to filter schools that will accept her score or less. (Hint: use ACT_Score)**
+**Erase 'write_expression' and type the condition that will filter schools that will accept her score or less. (Hint: use ACT_Score)**
 ```{r amber_pref_Q11, exercise = TRUE, exercise.eval = FALSE}
 act_amber_pref_df = filter(amber_pref_df, write_expression )
 ```
